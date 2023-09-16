@@ -6,7 +6,8 @@ import AddTournament from "../components/AddTournament";
 
 export default function TournamentListings(){
    
- 
+
+    
 
     const [tournaments, setTournaments] = useState(
         [
