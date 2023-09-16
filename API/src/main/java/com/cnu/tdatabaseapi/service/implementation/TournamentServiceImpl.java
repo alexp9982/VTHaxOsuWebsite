@@ -17,6 +17,11 @@ public class TournamentServiceImpl implements TournamentService {
     }
 
     @Override
+    public TournamentEntry getTournamentByID(int id) {
+        return tournamentRepository.findById(id).get();
+    }
+
+    @Override
     public TournamentEntry addEntry(TournamentEntry tournamentEntry) {
         return tournamentRepository.save(tournamentEntry);
     }

@@ -24,15 +24,4 @@ public class TournamentEntry {
     private Integer maxRank;
     private String mode;
 
-//    public TournamentEntry(String id, String name, String description, String userID, String closingDate, int minRank, int maxRank, String mode) {
-//        super();
-//        this.id = id;
-//        this.name = name;
-//        this.description = description;
-//        this.userID = userID;
-//        this.closingDate = closingDate;
-//        this.minRank = minRank;
-//        this.maxRank = maxRank;
-//        this.mode = mode;
-//    }
 }

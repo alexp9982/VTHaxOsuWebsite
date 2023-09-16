@@ -8,6 +8,8 @@ public interface TournamentService {
 
     public List<TournamentEntry> getTournaments();
 
+    public TournamentEntry getTournamentByID(int id);
+
     public TournamentEntry addEntry(TournamentEntry tournamentEntry);
 
     public TournamentEntry deleteEntry(int id);
