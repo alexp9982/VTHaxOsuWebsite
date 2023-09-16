@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping( value="/api")
+@RequestMapping( value="/api", method={RequestMethod.GET, RequestMethod.POST})
 public class TournamentController {
     @Autowired
     private TournamentService tournamentService;
@@ -19,7 +19,7 @@ public class TournamentController {
         return tournamentService.getTournaments();
     }
 
-    @RequestMapping(value="/insert", produces="application/json", method=RequestMethod.POST)
+    @PostMapping("/insert")
     public TournamentEntry insert(@RequestBody TournamentEntry tournamentEntry) {
         // Use the injected tournamentService to add a tournament
         return tournamentService.addEntry(tournamentEntry);
