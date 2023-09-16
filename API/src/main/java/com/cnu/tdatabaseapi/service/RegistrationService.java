@@ -9,6 +9,8 @@ public interface RegistrationService {
 
     public List<RegistrationEntry> getTRegistrations(int tournamentID);
 
+    public List<RegistrationEntry> getURegistrations(int userID);
+
     public RegistrationEntry addEntry(RegistrationEntry registrationEntry);
 
     public RegistrationEntry deleteEntry(int id);

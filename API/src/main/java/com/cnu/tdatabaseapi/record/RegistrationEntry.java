@@ -16,6 +16,6 @@ public class RegistrationEntry {
     private @Id Integer id;
 
     private Integer tournamentID;
-    private String userID;
+    private Integer userID;
 
 }
