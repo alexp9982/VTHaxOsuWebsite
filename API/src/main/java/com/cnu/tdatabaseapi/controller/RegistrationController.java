@@ -30,6 +30,6 @@ public class RegistrationController {
 
     @PutMapping("/findTournamentRegistrations/{tournamentID}")
     public List<RegistrationEntry> findByID(@PathVariable int tournamentID) {
-        return registrationService.getRegistration(tournamentID);
+        return registrationService.getTRegistrations(tournamentID);
     }
 }
