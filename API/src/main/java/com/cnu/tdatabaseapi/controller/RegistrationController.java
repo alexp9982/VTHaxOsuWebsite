@@ -29,7 +29,12 @@ public class RegistrationController {
     }
 
     @PutMapping("/findTournamentRegistrations/{tournamentID}")
-    public List<RegistrationEntry> findByID(@PathVariable int tournamentID) {
+    public List<RegistrationEntry> findByTID(@PathVariable int tournamentID) {
         return registrationService.getTRegistrations(tournamentID);
+    }
+
+    @PutMapping("/findUserRegistrations/{userID}")
+    public List<RegistrationEntry> findByUID(@PathVariable int userID) {
+        return registrationService.getURegistrations(userID);
     }
 }

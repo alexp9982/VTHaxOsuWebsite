@@ -31,6 +31,18 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
+    public List<RegistrationEntry> getURegistrations(int userID) {
+        List<RegistrationEntry> allRegs = getRegistrations();
+        List<RegistrationEntry> filtered = new ArrayList<>();
+        for (RegistrationEntry r : allRegs) {
+            if (r.getUserID() == userID) {
+                filtered.add(r);
+            }
+        }
+        return filtered;
+    }
+
+    @Override
     public RegistrationEntry addEntry(RegistrationEntry registrationEntry) {
         return registrationRepository.save(registrationEntry);
     }
