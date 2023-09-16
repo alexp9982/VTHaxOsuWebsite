@@ -36,26 +36,3 @@ API/.vscode/
 
 ### API Keys ###
 API/src/main/resources/application.yml
-
-### React ###
-# dependencies
-REACT/node_modules
-REACT/.pnp
-REACT/.pnp.js
-
-# testing
-REACT/coverage
-
-# production
-REACT/build
-
-# misc
-REACT/.DS_Store
-REACT/.env.local
-REACT/.env.development.local
-REACT/.env.test.local
-REACT/.env.production.local
-
-REACT/npm-debug.log*
-REACT/yarn-debug.log*
-REACT/yarn-error.log*
