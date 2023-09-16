@@ -18,7 +18,7 @@ public class TournamentController {
         // Use the injected tournamentService to fetch tournaments
         return tournamentService.getTournaments();
     }
-    @GetMapping("/getTournamentByID")
+    @GetMapping("/getTournamentByID/{id}")
     public TournamentEntry findTournamentByID(@PathVariable int id) {
         return tournamentService.getTournamentByID(id);
     }
