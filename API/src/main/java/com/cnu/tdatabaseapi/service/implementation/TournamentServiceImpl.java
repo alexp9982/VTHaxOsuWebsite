@@ -43,6 +43,7 @@ public class TournamentServiceImpl implements TournamentService {
         tournamentEntryVar.setMinRank(tournamentEntry.getMinRank());
         tournamentEntryVar.setMaxRank(tournamentEntry.getMaxRank());
         tournamentEntryVar.setMode(tournamentEntry.getMode());
+        tournamentEntryVar.setImageLink(tournamentEntry.getImageLink());
         tournamentRepository.save(tournamentEntryVar);
         return tournamentEntryVar;
     }

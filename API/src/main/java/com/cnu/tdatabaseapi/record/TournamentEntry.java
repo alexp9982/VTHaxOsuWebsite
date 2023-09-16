@@ -22,5 +22,7 @@ public class TournamentEntry {
     private Integer minRank;
     private Integer maxRank;
     private String mode;
+    private String imageLink;
+
 
 }
