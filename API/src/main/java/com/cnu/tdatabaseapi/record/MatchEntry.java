@@ -9,18 +9,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Document(collection = "tournament-entry")
-
-public class TournamentEntry {
+@Document(collection = "match-entry")
+public class MatchEntry {
 
     private @Id Integer id;
 
-    private String name;
-    private String description;
-    private Integer hostID;
-    private String closingDate;
-    private Integer minRank;
-    private Integer maxRank;
-    private String mode;
+    private Integer tournamentID;
+    private Integer user1ID;
+    private Integer user2ID;
+    private String matchTime;
+    private Integer user1Score;
+    private Integer user2Score;
 
 }

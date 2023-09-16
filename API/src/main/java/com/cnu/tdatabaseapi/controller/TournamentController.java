@@ -23,20 +23,24 @@ public class TournamentController {
         // Use the injected tournamentService to fetch tournaments
         return tournamentService.getTournaments();
     }
+    @GetMapping("/getTournamentByID/{id}")
+    public TournamentEntry findTournamentByID(@PathVariable int id) {
+        return tournamentService.getTournamentByID(id);
+    }
 
-    @PostMapping("/insert")
+    @PostMapping("/createTournament")
     public TournamentEntry insert(@RequestBody TournamentEntry tournamentEntry) {
         // Use the injected tournamentService to add a tournament
         return tournamentService.addEntry(tournamentEntry);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deleteTournament/{id}")
     public TournamentEntry delete(@PathVariable int id) {
         // Use the injected tournamentService to delete a tournament by ID
         return tournamentService.deleteEntry(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/updateTournament/{id}")
     public TournamentEntry update(@PathVariable int id, @RequestBody TournamentEntry tournamentEntry) {
         // Use the injected tournamentService to update a tournament by ID
         return tournamentService.updateEntry(id, tournamentEntry);
