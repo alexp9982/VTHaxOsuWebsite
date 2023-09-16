@@ -15,15 +15,17 @@ export default function AddTournament(){
 
     function sendTournamentToDatabase(){
         let sendBody = {
+
             "id": 12,
             "name": name,
             "description": description,
             "hostID": 12,
             "closingDate": closingDate,
-            "minRank": minRank,
-            "maxRank": maxRank,
+            "minRank": Number(minRank),
+            "maxRank": Number(maxRank),
             "mode": mode
         }
+
 
         fetch("http://localhost:8080/api/createTournament", {
             method: "POST",
