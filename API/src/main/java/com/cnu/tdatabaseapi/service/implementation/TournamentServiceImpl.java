@@ -38,7 +38,7 @@ public class TournamentServiceImpl implements TournamentService {
         TournamentEntry tournamentEntryVar = tournamentRepository.findById(id).get();
         tournamentEntryVar.setName(tournamentEntry.getName());
         tournamentEntryVar.setDescription(tournamentEntry.getDescription());
-        tournamentEntryVar.setUserID(tournamentEntry.getUserID());
+        tournamentEntryVar.setHostID(tournamentEntry.getHostID());
         tournamentEntryVar.setClosingDate(tournamentEntry.getClosingDate());
         tournamentEntryVar.setMinRank(tournamentEntry.getMinRank());
         tournamentEntryVar.setMaxRank(tournamentEntry.getMaxRank());
