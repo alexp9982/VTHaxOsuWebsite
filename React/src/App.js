@@ -1,7 +1,7 @@
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Header from './components/Header';
-import TournamentListing from './pages/TournamentVisiting'
+import TournamentListing from './pages/TournamentListings'
 import UserPage from './pages/UserPage';
 import TournammentDetails from './pages/TournamentDetails';
 
