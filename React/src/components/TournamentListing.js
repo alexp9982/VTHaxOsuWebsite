@@ -8,6 +8,8 @@ export default function TournamentListing(props){
     const location = useLocation();
     const navigate = useNavigate();
 
+
+    console.log(props)
     return (
 
         <div className='w-30 m-2 '>
