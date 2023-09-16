@@ -19,9 +19,9 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
-    public List<RegistrationEntry> getRegistration(int tournamentID) {
+    public List<RegistrationEntry> getTRegistrations(int tournamentID) {
         List<RegistrationEntry> allRegs = getRegistrations();
-        List<RegistrationEntry> filtered = new ArrayList<RegistrationEntry>();
+        List<RegistrationEntry> filtered = new ArrayList<>();
         for (RegistrationEntry r : allRegs) {
             if (r.getTournamentID() == tournamentID) {
                 filtered.add(r);
