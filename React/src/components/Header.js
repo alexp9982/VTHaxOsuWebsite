@@ -46,9 +46,9 @@ export default function Header(props) {
 
                         // need to deconstruct isActive
                         className={ ({isActive}) => {
-                            return ('no-underline block rounded-md px-3 py-2 text-base font-medium' +
-                            (isActive ? 'text-gray-300 hover:bg-gray-700 hover:text-white':
-                            'bg-gray-900 text-white')
+                            return ('no-underline block rounded-md px-3 py-2 text-base font-medium  ' +
+                            (isActive ? 'text-white bg-gray-900 ':
+                            'text-white hover:bg-gray-700 hover:text-white')
                             );
                         }}
 
