@@ -30,7 +30,10 @@ public class TournamentController {
 
     @PostMapping("/createTournament")
     public TournamentEntry insert(@RequestBody TournamentEntry tournamentEntry) {
-        // Use the injected tournamentService to add a tournament
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        DefaultOAuth2User myUser = (DefaultOAuth2User) authentication.getPrincipal();
+
+        tournamentEntry.setHostID(myUser.getAttribute("id"));
         return tournamentService.addEntry(tournamentEntry);
     }
 
