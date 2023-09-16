@@ -15,11 +15,14 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests( auth -> {
-                    auth.requestMatchers("/").permitAll();
-                    auth.anyRequest().authenticated();
+                    auth.requestMatchers("/api/createTournament").authenticated();
+                    auth.requestMatchers("/api/createMatch").authenticated();
+                    auth.requestMatchers("/api/createRegistration").authenticated();
+
+
+                    auth.requestMatchers("/**").permitAll();
                 })
                 .oauth2Login(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults())
                 .build();
 
 

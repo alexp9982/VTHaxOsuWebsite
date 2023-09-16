@@ -3,9 +3,14 @@ package com.cnu.tdatabaseapi.controller;
 import com.cnu.tdatabaseapi.record.TournamentEntry;
 import com.cnu.tdatabaseapi.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping( value="/api", method={RequestMethod.GET, RequestMethod.POST})
@@ -35,5 +40,19 @@ public class TournamentController {
     public TournamentEntry update(@PathVariable int id, @RequestBody TournamentEntry tournamentEntry) {
         // Use the injected tournamentService to update a tournament by ID
         return tournamentService.updateEntry(id, tournamentEntry);
+    }
+
+    @GetMapping("test")
+    @ResponseBody
+    public Object test() {
+        Map<String, Object> object = new HashMap<>();
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        DefaultOAuth2User myUser = (DefaultOAuth2User) authentication.getPrincipal();
+
+        object.put("username", myUser.getAttribute("username"));
+        object.put("id", myUser.getAttribute("id"));
+        return object;
+
     }
 }
