@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping( value="/api", method={RequestMethod.GET, RequestMethod.POST})
 public class TournamentController {
     @Autowired
     private TournamentService tournamentService;
