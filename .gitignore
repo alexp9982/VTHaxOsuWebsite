@@ -1,6 +1,7 @@
 HELP.md
 target/
 .idea/
+.DS_Store
 !API/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
