@@ -2,6 +2,7 @@ package com.cnu.tdatabaseapi.record;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Generated;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,8 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 public class TournamentEntry {
 
-    @Id
-    private Integer id;
+    private @Id Integer id;
 
     private String name;
     private String description;
