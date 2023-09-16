@@ -15,17 +15,19 @@ export default function AddTournament(){
 
     function sendTournamentToDatabase(){
         let sendBody = {
-            "id": 22,
+
+            "id": 12,
             "name": name,
             "description": description,
-            "hostID": 34,
+            "hostID": 12,
             "closingDate": closingDate,
             "minRank": Number(minRank),
             "maxRank": Number(maxRank),
             "mode": mode
         }
 
-        fetch("http://ocalhost:8080/api/insert", {
+
+        fetch("http://localhost:8080/api/createTournament", {
             method: "POST",
             body: JSON.stringify(sendBody),
             headers: {
