@@ -7,25 +7,40 @@ export default function TournamentDetails(props){
     const params = useParams();
 
 
-useEffect(() => {
-    // declare the data fetching function
-    const fetchData = async () => {
-        const data = await fetch('http://localhost:8080/api/getTournament/'+params.id);
+// useEffect(() => {
+    // // declare the data fetching function
+    // const fetchData = async () => {
+    //     const data = await fetch('http:/localhost:8080/api/getTournamentByID/'+params.id);
 
-        setTournament(data)
+    //     setTournament(data)
+    //     console.log(data)
 
-    }
-
+    // }
     
-    // call the function
-    fetchData()
-        // make sure to catch any error
-        .catch(console.error);
-    }, [])
+    // // call the function
+    // fetchData()
+    //     // make sure to catch any error
+    //     .catch(console.error);
+    // }, [])
 
+
+      
+        useEffect(() => {
+          async function fetchData() {
+            var data = await fetch('http:/localhost:8080/api/getTournamentByID/22' ).then(res => {
+                return res.text();
+            });
+      
+            setTournament(data);
+            console.log(data);
+          }
+          fetchData();
+        }, []);
 
 
     return (
-        <h1>Details for {tournament}</h1>
+        
+        <h1 >Detail</h1>
+        
     );
 }
