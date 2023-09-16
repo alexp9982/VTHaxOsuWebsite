@@ -51,31 +51,38 @@ export default function TournamentListing(props){
 
         
 
-        <div class='w-full gap-2 grid  grid-cols-3 '>
-    <div></div>
-    <div key={content} class="group relative rounded-lg overflow-hidden bg-white  hover:shadow-2xl ">
-        
-    <div class="h-40">
-        <img
-        src='https://lp-cms-production.imgix.net/2019-06/554369495_full.jpg'
-        alt='City'
-        class="h-40 w-full object-cover object-center "
-        />
-    </div>
-    <div class="h-1/2 p-4 ">
-        <h3 class="mb-2 text-base font-semibold text-blue-800">
-        <a href='' class="hover:underline">
-            Sed ut perspiciatis unde omnis iste
-        </a>
-        </h3>
-        <p class="text-sm font-bold text-orange-500">perspiciatis</p>
-        <div class='flex flex-row justify-between text-xs mt-2'> 
-        <p>perspiciatis</p><p>Sed ut perspiciatis unde omnis iste</p>
-        </div>
-    </div>
+        <div className='w-30 m-2 '>
+            <div></div>
+            <div className="group relative rounded-lg overflow-hidden bg-white  hover:shadow-2xl ">
+                
+            <div className="object-contain h-48 w-96">
+            {
+                    props.tournament.img ? 
+                        <img
+                            src={props.tournament.img}
+                            className="object-contain h-48 w-96 object-center "
+                        />
+                    :
+                        <img
+                        src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Osu%21_Logo_2016.svg/800px-Osu%21_Logo_2016.svg.png'
+                        alt='osu logo'
+                        className="object-contain h-48 w-96 object-center "
+                        />
+                    }
+            </div>
+            <div className="h-1/2 p-4 object-contain w-96">
+                <h3 className="font-bold text-xs mt-2 h-12 truncate">
+                <a href='' class="hover:underline">
+                    {props.tournament.name}
+                </a>
+                </h3>
+
+                <div className='flex flex-row justify-between text-xs mt-2 h-[66px]'> 
+                    <p className=" line-clamp-4		">{props.tournament.description}</p>
+                </div>
+            </div>
     </div>
 
-    <div></div>
     </div>
 
 
