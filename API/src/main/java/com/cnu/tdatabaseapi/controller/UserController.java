@@ -15,8 +15,26 @@ public class UserController {
 
     @GetMapping("/getUsers")
     public List<UserEntry> getUsers() {
-        // Use the injected tournamentService to fetch tournaments
         return userService.getUsers();
     }
 
+    @GetMapping("/getUserByID/{id}")
+    public UserEntry getUserByID(@PathVariable int id) {
+        return userService.getUser(id);
+    }
+
+    @PostMapping("/createUser")
+    public UserEntry insert(@RequestBody UserEntry userEntry) {
+        return userService.addEntry(userEntry);
+    }
+
+    @DeleteMapping("/deleteUser/{id}")
+    public UserEntry delete(@PathVariable int id) {
+        return userService.deleteEntry(id);
+    }
+
+    @PutMapping("/updateUser/{id}")
+    public UserEntry update(@PathVariable int id, @RequestBody UserEntry userEntry) {
+        return userService.updateEntry(id, userEntry);
+    }
 }
