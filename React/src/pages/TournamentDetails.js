@@ -98,9 +98,16 @@ export default function TournamentDetails(props){
                             </svg>
                         </a>
                     </div>
+                    <div className="mt-8 ">
+                    <h1
+                        class="text-white text-center mb-4	">
+                        Registered Users:
+                    </h1>
+                        <RegistedUserTable tourID={params.id} />
+                    </div>
                 </div>
             </div>
-            <RegistedUserTable tourID={params.id} />
+       
 
         </div>
         );

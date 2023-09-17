@@ -9,18 +9,20 @@ import AuthCallback from './pages/AuthCallback';
 
 function App() {
   return (
-    <BrowserRouter>
-    <Header>
-        <Routes>
-          <Route path='TournamentListings' element={<TournamentListing />}> 
-          </Route>
-          <Route path='TournamentListings/:id' element={<TournamentDetails />}/>
-          <Route path='/UserPage' element={<UserPage />}/>
-          <Route path='authcallback' element={<AuthCallback />}></Route>
+    <div className="">
+      <BrowserRouter>
+      <Header>
+          <Routes>
+            <Route path='TournamentListings' element={<TournamentListing />}> 
+            </Route>
+            <Route path='TournamentListings/:id' element={<TournamentDetails />}/>
+            {/* <Route path='/UserPage' element={<UserPage />}/> */}
+            <Route path='authcallback' element={<AuthCallback />}></Route>
 
-        </Routes>
-      </Header>
-   </BrowserRouter>
+          </Routes>
+        </Header>
+    </BrowserRouter>
+   </div>
   );
 }
 

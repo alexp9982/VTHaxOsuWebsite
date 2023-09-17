@@ -16,7 +16,7 @@ export default function Header(props) {
 
   const navigation = [
     { name: 'Tournament Listings', href: '/tournamentListings' },
-    { name: 'user', href: '/userPage' },
+    // { name: 'user', href: '/userPage' },
     { name: Login, href: (Login == "Login") ? 'http://localhost:8080/oauth2/authorization/osu-login' : "http://localhost:8080/logout"}
   //   { name: 'Definition', href: '/definition'},
   ]

@@ -6,11 +6,11 @@ export default function RegistedUserTable(props){
 
 
 
-    const TABLE_HEAD = ["Username", "Rank", "Employed", ""];
+    const TABLE_HEAD = ["Username", "Rank"];
  
     const [registedUsers, setRegisteredUsers] = useState([])
 
-
+    
 
     useEffect(() => {
             async function fetchData() {
@@ -27,24 +27,20 @@ export default function RegistedUserTable(props){
 
     return(
 
-    <Card className="h-full w-full overflow-scroll">
-    <table className="w-full min-w-max table-auto text-left">
-    {/* <thead>
+    <Card className="">
+    <table className="  ">
+    <thead>
         <tr>
-        {registedUsers.map((head) => (
+        {TABLE_HEAD.map((head) => (
             <th key={head} className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-            <Typography
-                variant="small"
-                color="blue-gray"
-                className="font-normal leading-none opacity-70"
-            >
+                
                 {head}
-            </Typography>
             </th>
         ))}
         </tr>
-    </thead> */}
-    <tbody>
+    </thead>
+    <div class="overflow-y-auto">
+    <tbody class="">
         {registedUsers.map( (user) => (
         <tr key={user.id} className="even:bg-blue-gray-50/50">
             <td  className="p-4">
@@ -53,13 +49,10 @@ export default function RegistedUserTable(props){
             <td className="p-4">
                 {user.rank}
             </td>
- 
-            <td className="p-4">
-                Edit
-            </td>
         </tr>
         ))}
     </tbody>
+    </div>
     </table>
     </Card>
     );
