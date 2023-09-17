@@ -3,13 +3,13 @@ package com.cnu.tdatabaseapi.controller;
 import com.cnu.tdatabaseapi.record.RegistrationEntry;
 import com.cnu.tdatabaseapi.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @RequestMapping( value="/api", method={RequestMethod.GET, RequestMethod.POST})
@@ -17,6 +17,7 @@ public class RegistrationController {
     @Autowired
     private RegistrationService registrationService;
 
+    private Random random = new Random();
     @GetMapping("/getRegistrations")
     public List<RegistrationEntry> getRegistrations() {
         return registrationService.getRegistrations();
@@ -31,6 +32,7 @@ public class RegistrationController {
         }
         
         registrationEntry.setUserID(myUser.getAttribute("id"));
+        registrationEntry.setId(random.nextInt());
         return registrationService.addEntry(registrationEntry);
     }
 

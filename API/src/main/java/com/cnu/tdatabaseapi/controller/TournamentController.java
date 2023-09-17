@@ -4,7 +4,6 @@ import com.cnu.tdatabaseapi.record.TournamentEntry;
 import com.cnu.tdatabaseapi.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @RestController
 @RequestMapping( value="/api", method={RequestMethod.GET, RequestMethod.POST})
@@ -20,6 +20,7 @@ public class TournamentController {
     @Autowired
     private TournamentService tournamentService;
 
+    private Random random = new Random();
     @GetMapping("/getTournaments")
     public List<TournamentEntry> getTournaments() {
         // Use the injected tournamentService to fetch tournaments
@@ -41,6 +42,7 @@ public class TournamentController {
         DefaultOAuth2User myUser = (DefaultOAuth2User) authentication.getPrincipal();
 
         tournamentEntry.setHostID(myUser.getAttribute("id"));
+        tournamentEntry.setId(random.nextInt());
         return tournamentService.addEntry(tournamentEntry);
     }
 
