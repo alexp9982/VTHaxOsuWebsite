@@ -52,9 +52,9 @@ export default function TournamentDetails(props){
         }, []);
       
           return (
-              <div className=" w-full min-h-screen rounded-xl m-6 mx-auto dark:bg-gray-800">
+              <div className=" w-full min-h-screen rounded-xl m-6 mx-auto bg-gray-800">
             
-            <div className="  rounded-lg   dark:bg-gray-800 h-[90%] ">
+            <div className="  rounded-lg   bg-gray-800 h-[90%] ">
                 { img ? 
                 <img className="w-[60%] mx-auto pt-6 " src={img} alt="" />
                 :
@@ -63,11 +63,11 @@ export default function TournamentDetails(props){
                 }
                 <div className="p-5 mx-auto w-[60%] mt-4">
                     
-                    <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{name}</h3>
-                    <h6 className="mb-2 text-2l font-semi tracking-tight text-gray-900 dark:text-white">Ranks:  ({minRank} - {maxRank})</h6>
-                    <h5 className="mb-2 text-2l font-semi tracking-tight text-gray-900 dark:text-white">Closes: {closingDate}</h5>
+                    <h3 className="mb-2 text-2xl font-bold tracking-tight text-white">{name}</h3>
+                    <h6 className="mb-2 text-2l font-semi tracking-tight text-white">Ranks:  ({minRank} - {maxRank})</h6>
+                    <h5 className="mb-2 text-2l font-semi tracking-tight text-white">Closes: {closingDate}</h5>
                     
-                    <p className="mx-auto mb-3 font-normal text-gray-900 dark:text-gray-300">{description}</p>
+                    <p className="mx-auto mb-3 font-normal text-gray-300">{description}</p>
                     <div className="mx-auto mt-10 text-center">
                         <a onClick={()=>{
                              let sendBody = {

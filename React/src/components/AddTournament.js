@@ -72,9 +72,10 @@ export default function AddTournament(){
                       className="bg-transparent border-0 text-black float-right"
                       onClick={() => setShowModal(false)}
                     >
-                      <span className="text-black opacity-7 h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full">
+                      {/* <span className="text-black opacity-7 h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full text-center leading-5">
                         x
-                      </span>
+                      </span> */}
+                      <img src="/cancel.png" style={{height: "20px"}}></img>
                     </button>
                   </div>
                   <div className="relative p-6 flex-auto">
