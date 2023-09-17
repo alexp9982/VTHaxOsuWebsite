@@ -1,6 +1,5 @@
 package com.cnu.tdatabaseapi.service.implementation;
 
-import com.cnu.tdatabaseapi.record.MatchEntry;
 import com.cnu.tdatabaseapi.record.TournamentEntry;
 import com.cnu.tdatabaseapi.repository.TournamentRepository;
 import com.cnu.tdatabaseapi.service.TournamentService;

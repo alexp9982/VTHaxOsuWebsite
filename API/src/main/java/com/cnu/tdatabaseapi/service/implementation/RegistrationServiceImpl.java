@@ -1,6 +1,5 @@
 package com.cnu.tdatabaseapi.service.implementation;
 
-import com.cnu.tdatabaseapi.record.MatchEntry;
 import com.cnu.tdatabaseapi.record.RegistrationEntry;
 import com.cnu.tdatabaseapi.repository.RegistrationRepository;
 import com.cnu.tdatabaseapi.service.RegistrationService;
