@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -25,15 +26,19 @@ public class RegistrationController {
 
     @PostMapping("/createRegistration")
     public RegistrationEntry insert(@RequestBody RegistrationEntry registrationEntry) {
+//        return registrationEntry;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        return authentication;
         DefaultOAuth2User myUser = (DefaultOAuth2User) authentication.getPrincipal();
+//        return  myUser;
         if (authentication.getPrincipal() == "anonymousUser") {
             return null;
         }
-        
+
         registrationEntry.setUserID(myUser.getAttribute("id"));
         registrationEntry.setUsername(myUser.getAttribute("username"));
-        registrationEntry.setRank(myUser.getAttribute("global_rank"));
+        HashMap<String, Object> pfStats = myUser.getAttribute(("statistics"));
+        registrationEntry.setRank((Integer)pfStats.get("global_rank"));
         int rando = random.nextInt();
         while (registrationService.isIdDuplicate(rando)) {
             rando = random.nextInt();
