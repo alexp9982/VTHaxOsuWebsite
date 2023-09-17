@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 const navigation = [
   { name: 'Tournament Listings', href: '/tournamentListings' },
   { name: 'user', href: '/userPage' },
-  { name: 'Login', href: '/authcallback' }
+  { name: 'Login', href: 'http://localhost:8080/oauth2/authorization/osu-login' }
 //   { name: 'Definition', href: '/definition'},
 ]
 
