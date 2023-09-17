@@ -23,6 +23,11 @@ export default function RegistedUserTable(props){
             fetchData();
         }, []);
 
+
+    useEffect(() => {
+      setRegisteredUsers(registedUsers => [...props.localRegister, ...registedUsers])
+
+    }, [props.localRegister])    
         console.log(registedUsers)
 
     return(
