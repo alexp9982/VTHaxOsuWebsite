@@ -3,6 +3,8 @@ package com.cnu.tdatabaseapi.controller;
 import com.cnu.tdatabaseapi.record.TournamentEntry;
 import com.cnu.tdatabaseapi.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
@@ -30,7 +32,12 @@ public class TournamentController {
 
     @PostMapping("/createTournament")
     public TournamentEntry insert(@RequestBody TournamentEntry tournamentEntry) {
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication.getPrincipal() == "anonymousUser") {
+            return null;
+        }
+
         DefaultOAuth2User myUser = (DefaultOAuth2User) authentication.getPrincipal();
 
         tournamentEntry.setHostID(myUser.getAttribute("id"));
@@ -55,8 +62,11 @@ public class TournamentController {
         Map<String, Object> object = new HashMap<>();
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        DefaultOAuth2User myUser = (DefaultOAuth2User) authentication.getPrincipal();
+        if (authentication.getPrincipal() == "anonymousUser") {
+            return ResponseEntity.status(401).body("Please sign in to use this endpoint.");
+        }
 
+        DefaultOAuth2User myUser = (DefaultOAuth2User) authentication.getPrincipal();
         object.put("username", myUser.getAttribute("username"));
         object.put("id", myUser.getAttribute("id"));
         return object;

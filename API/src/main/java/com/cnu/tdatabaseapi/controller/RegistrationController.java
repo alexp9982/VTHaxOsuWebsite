@@ -3,6 +3,7 @@ package com.cnu.tdatabaseapi.controller;
 import com.cnu.tdatabaseapi.record.RegistrationEntry;
 import com.cnu.tdatabaseapi.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
@@ -25,8 +26,10 @@ public class RegistrationController {
     public RegistrationEntry insert(@RequestBody RegistrationEntry registrationEntry) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         DefaultOAuth2User myUser = (DefaultOAuth2User) authentication.getPrincipal();
-
-
+        if (authentication.getPrincipal() == "anonymousUser") {
+            return null;
+        }
+        
         registrationEntry.setUserID(myUser.getAttribute("id"));
         return registrationService.addEntry(registrationEntry);
     }

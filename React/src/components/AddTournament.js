@@ -16,7 +16,7 @@ export default function AddTournament(){
     function sendTournamentToDatabase(){
         let sendBody = {
 
-            "id": 12,
+            "id": 1337,
             "name": name,
             "description": description,
             "hostID": 12,
@@ -27,12 +27,13 @@ export default function AddTournament(){
         }
 
 
-        fetch("http://localhost:8080/api/createTournament", {
+        fetch("/api/createTournament", {
             method: "POST",
             body: JSON.stringify(sendBody),
             headers: {
-              "Content-Type": "application/json",
+              "Content-Type": "application/json"
             },
+            credentials: "include",
         })
 
         console.log("sdfjlsdk")

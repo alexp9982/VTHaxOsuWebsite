@@ -13,15 +13,18 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .authorizeHttpRequests( auth -> {
-                    auth.requestMatchers("/api/createTournament").authenticated();
-                    auth.requestMatchers("/api/createMatch").authenticated();
-                    auth.requestMatchers("/api/createRegistration").authenticated();
+        return http.cors().and().csrf().disable()
+//                .authorizeHttpRequests( auth -> {
+//                    auth.requestMatchers("/api/createTournament").authenticated();
+//                    auth.requestMatchers("/api/createMatch").authenticated();
+//                    auth.requestMatchers("/api/createRegistration").authenticated();
+//                    auth.requestMatchers("/api/test").authenticated();
 
 
-                    auth.requestMatchers("/**").permitAll();
-                })
+
+//                    auth.requestMatchers("/**").permitAll();
+//                })
+//                .formLogin(Customizer.withDefaults())
                 .oauth2Login(Customizer.withDefaults())
                 .build();
 
