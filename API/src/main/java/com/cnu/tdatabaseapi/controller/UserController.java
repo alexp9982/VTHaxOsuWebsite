@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @RequestMapping( value="/api", method={RequestMethod.GET, RequestMethod.POST})
@@ -13,6 +14,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    private Random random = new Random();
     @GetMapping("/getUsers")
     public List<UserEntry> getUsers() {
         return userService.getUsers();
@@ -25,6 +27,7 @@ public class UserController {
 
     @PostMapping("/createUser")
     public UserEntry insert(@RequestBody UserEntry userEntry) {
+        userEntry.setId(random.nextInt());
         return userService.addEntry(userEntry);
     }
 
