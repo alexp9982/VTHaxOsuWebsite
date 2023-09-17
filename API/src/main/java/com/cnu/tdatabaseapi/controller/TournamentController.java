@@ -33,14 +33,19 @@ public class TournamentController {
     @PostMapping("/createTournament")
     public TournamentEntry insert(@RequestBody TournamentEntry tournamentEntry) {
 
+        System.out.println("Creating tournament...");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication.getPrincipal());
         if (authentication.getPrincipal() == "anonymousUser") {
+            System.out.println("Not authenticated!!");
             return null;
         }
 
         DefaultOAuth2User myUser = (DefaultOAuth2User) authentication.getPrincipal();
 
         tournamentEntry.setHostID(myUser.getAttribute("id"));
+        System.out.println("pushing now!!");
+
         return tournamentService.addEntry(tournamentEntry);
     }
 
@@ -56,7 +61,7 @@ public class TournamentController {
         return tournamentService.updateEntry(id, tournamentEntry);
     }
 
-    @GetMapping("test")
+    @GetMapping("/getSelf")
     @ResponseBody
     public Object test() {
         Map<String, Object> object = new HashMap<>();

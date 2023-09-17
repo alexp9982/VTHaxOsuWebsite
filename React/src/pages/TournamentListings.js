@@ -26,7 +26,7 @@ export default function TournamentListings(){
   
     useEffect(() => {
             async function fetchData() {
-              var data = await fetch('http://localhost:8080/api/getTournaments' ).then(res => {
+              var data = await fetch('http://localhost:3000/api/getTournaments' ).then(res => {
                   return res.json();
               });
               setTournaments(data)

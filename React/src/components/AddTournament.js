@@ -16,14 +16,15 @@ export default function AddTournament(){
     function sendTournamentToDatabase(){
         let sendBody = {
 
-            "id": 1337,
+            "id": 125,
             "name": name,
             "description": description,
             "hostID": 12,
             "closingDate": closingDate,
             "minRank": Number(minRank),
             "maxRank": Number(maxRank),
-            "mode": mode
+            "mode": mode,
+            "imageLink": "https://myimage.jpg"
         }
 
 
