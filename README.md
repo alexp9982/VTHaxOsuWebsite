@@ -19,6 +19,49 @@ There are five primary elements of this API.
 
 On the front end, we used React, along with Tailwind for CSS to form the website. 
 
+---
+
+## Additional Files
+
+There is a file that we are unable to upload here due to it containing several
+"secrets" within. This file is for the API and is located in:
+
+*API -> src -> main -> resources*
+
+
+You will need to create a file called ***application.yml*** with the following inside of it:
+
+```yaml
+osu:
+  base-url: https://osu.ppy.sh/
+
+spring:
+  data:
+    mongodb:
+      uri: [INSERT MONGODB SERVER HERE]
+      database: tournament-db
+  security:
+    oauth2:
+      client:
+        registration:
+          osu-login:
+            provider: osu
+            client-id: [INSERT OSU CLIENT ID HERE]
+            client-secret: [INSERT OSU CLIENT SECRET HERE]
+            scope:
+              - identify
+              - public
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8080/login/oauth2/code/osu
+
+        provider:
+          osu:
+            authorization-uri: ${osu.base-url}/oauth/authorize
+            token-uri: ${osu.base-url}/oauth/token
+            user-info-uri: ${osu.base-url}api/v2/me/osu
+            #            jwk-set-uri: ${osu.base-url}/oauth2/v1/keys
+            user-name-attribute: username
+```
 
 ---
 ## API Spec
@@ -92,49 +135,6 @@ On the front end, we used React, along with Tailwind for CSS to form the website
 */api/findUserMatches/{id}*
 - Returns a list of all matches for user {id}
 
----
-
-## Additional Files
-
-There is a file that we are unable to upload here due to it containing several
-"secrets" within. This file is for the API and is located in:
-
-*API -> src -> main -> resources*
-
-
-You will need to create a file called ***application.yml*** with the following inside of it:
-
-```yaml
-osu:
-  base-url: https://osu.ppy.sh/
-
-spring:
-  data:
-    mongodb:
-      uri: [INSERT MONGODB SERVER HERE]
-      database: tournament-db
-  security:
-    oauth2:
-      client:
-        registration:
-          osu-login:
-            provider: osu
-            client-id: [INSERT OSU CLIENT ID HERE]
-            client-secret: [INSERT OSU CLIENT SECRET HERE]
-            scope:
-              - identify
-              - public
-            authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8080/login/oauth2/code/osu
-
-        provider:
-          osu:
-            authorization-uri: ${osu.base-url}/oauth/authorize
-            token-uri: ${osu.base-url}/oauth/token
-            user-info-uri: ${osu.base-url}api/v2/me/osu
-            #            jwk-set-uri: ${osu.base-url}/oauth2/v1/keys
-            user-name-attribute: username
-```
 
 
 
