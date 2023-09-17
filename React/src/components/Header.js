@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom'
 
 const navigation = [
   { name: 'Tournament Listings', href: '/tournamentListings' },
-  { name: 'user', href: '/userPage' }
-//   { name: 'Dictionary', href: '/dictionary' },
+  { name: 'user', href: '/userPage' },
+  { name: 'Login', href: 'http://localhost:8080/oauth2/authorization/osu-login' }
 //   { name: 'Definition', href: '/definition'},
 ]
 
@@ -15,6 +15,7 @@ function classNames(...classes) {
 }
 
 export default function Header(props) {
+
   return (
     <>
     <Disclosure as="nav" className="bg-gray-800">
@@ -46,9 +47,9 @@ export default function Header(props) {
 
                         // need to deconstruct isActive
                         className={ ({isActive}) => {
-                            return ('no-underline block rounded-md px-3 py-2 text-base font-medium' +
-                            (isActive ? 'text-gray-300 hover:bg-gray-700 hover:text-white':
-                            'bg-gray-900 text-white')
+                            return ('no-underline block rounded-md px-3 py-2 text-base font-medium  ' +
+                            (isActive ? 'text-white bg-gray-900 ':
+                            'text-white hover:bg-gray-700 hover:text-white')
                             );
                         }}
 
@@ -89,7 +90,9 @@ export default function Header(props) {
         <div className='min-h-screen max-w-7xl mx-auto px-2 py-2'>
             {props.children}
         </div>
+
     </div>
+
 
      </>
   );

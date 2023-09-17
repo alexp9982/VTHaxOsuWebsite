@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @RequestMapping( value="/api", method={RequestMethod.GET, RequestMethod.POST})
@@ -14,6 +15,7 @@ public class MatchController {
     @Autowired
     private MatchService matchService;
 
+    private Random random = new Random();
     @GetMapping("/getMatches")
     public List<MatchEntry> getMatches() {
         return matchService.getMatches();
@@ -21,6 +23,7 @@ public class MatchController {
 
     @PostMapping("/createMatch")
     public MatchEntry createMatch(@RequestBody MatchEntry matchEntry) {
+        matchEntry.setId(random.nextInt());
         return matchService.addEntry(matchEntry);
     }
 

@@ -3,9 +3,13 @@ package com.cnu.tdatabaseapi.controller;
 import com.cnu.tdatabaseapi.record.RegistrationEntry;
 import com.cnu.tdatabaseapi.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @RequestMapping( value="/api", method={RequestMethod.GET, RequestMethod.POST})
@@ -13,6 +17,7 @@ public class RegistrationController {
     @Autowired
     private RegistrationService registrationService;
 
+    private Random random = new Random();
     @GetMapping("/getRegistrations")
     public List<RegistrationEntry> getRegistrations() {
         return registrationService.getRegistrations();
@@ -20,6 +25,16 @@ public class RegistrationController {
 
     @PostMapping("/createRegistration")
     public RegistrationEntry insert(@RequestBody RegistrationEntry registrationEntry) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        DefaultOAuth2User myUser = (DefaultOAuth2User) authentication.getPrincipal();
+        if (authentication.getPrincipal() == "anonymousUser") {
+            return null;
+        }
+        
+        registrationEntry.setUserID(myUser.getAttribute("id"));
+        registrationEntry.setUsername(myUser.getAttribute("username"));
+        registrationEntry.setRank(myUser.getAttribute("global_rank"));
+        registrationEntry.setId(random.nextInt());
         return registrationService.addEntry(registrationEntry);
     }
 

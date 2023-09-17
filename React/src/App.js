@@ -1,20 +1,22 @@
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Header from './components/Header';
-import TournamentListing from './pages/TournamentVisiting'
+import TournamentListing from './pages/TournamentListings'
 import UserPage from './pages/UserPage';
-import TournammentDetails from './pages/TournamentDetails';
+import TournamentDetails from './pages/TournamentDetails';
+import AuthCallback from './pages/AuthCallback';
 
 
 function App() {
   return (
     <BrowserRouter>
-      <Header>
+    <Header>
         <Routes>
-          <Route path='/TournamentListings' element={<TournamentListing />}/>
+          <Route path='TournamentListings' element={<TournamentListing />}> 
+          </Route>
+          <Route path='TournamentListings/:id' element={<TournamentDetails />}/>
           <Route path='/UserPage' element={<UserPage />}/>
-          <Route path='/TournammentDetails' element={<TournammentDetails />}/>
-
+          <Route path='authcallback' element={<AuthCallback />}></Route>
 
         </Routes>
       </Header>
