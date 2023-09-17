@@ -58,7 +58,7 @@ public class TournamentController {
         return tournamentService.updateEntry(id, tournamentEntry);
     }
 
-    @GetMapping("test")
+    @GetMapping("/getSelf")
     @ResponseBody
     public Object test() {
         Map<String, Object> object = new HashMap<>();
