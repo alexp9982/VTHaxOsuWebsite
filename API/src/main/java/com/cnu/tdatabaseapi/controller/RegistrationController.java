@@ -32,6 +32,7 @@ public class RegistrationController {
         }
         
         registrationEntry.setUserID(myUser.getAttribute("id"));
+        registrationEntry.setUsername(myUser.getAttribute("username"));
         registrationEntry.setId(random.nextInt());
         return registrationService.addEntry(registrationEntry);
     }

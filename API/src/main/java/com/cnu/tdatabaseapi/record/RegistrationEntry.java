@@ -17,5 +17,6 @@ public class RegistrationEntry {
 
     private Integer tournamentID;
     private Integer userID;
+    private String username;
 
 }
