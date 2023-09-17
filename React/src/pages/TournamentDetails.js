@@ -54,8 +54,8 @@ export default function TournamentDetails(props){
                 }
                 <div className="p-5 mx-auto w-[60%] mt-4">
                     
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{name}</h5>
-                    <h7 className="mb-2 text-2l font-semi tracking-tight text-gray-900 dark:text-white">Ranks:  ({minRank} - {maxRank})</h7>
+                    <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{name}</h3>
+                    <h6 className="mb-2 text-2l font-semi tracking-tight text-gray-900 dark:text-white">Ranks:  ({minRank} - {maxRank})</h6>
                     <h5 className="mb-2 text-2l font-semi tracking-tight text-gray-900 dark:text-white">Closes: {closingDate}</h5>
                     
                     <p className="mx-auto mb-3 font-normal text-gray-700 dark:text-gray-400">{description}</p>
