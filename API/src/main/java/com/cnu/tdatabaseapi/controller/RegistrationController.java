@@ -17,7 +17,7 @@ public class RegistrationController {
     @Autowired
     private RegistrationService registrationService;
 
-    private Random random = new Random();
+    private final Random random = new Random();
     @GetMapping("/getRegistrations")
     public List<RegistrationEntry> getRegistrations() {
         return registrationService.getRegistrations();
@@ -34,7 +34,11 @@ public class RegistrationController {
         registrationEntry.setUserID(myUser.getAttribute("id"));
         registrationEntry.setUsername(myUser.getAttribute("username"));
         registrationEntry.setRank(myUser.getAttribute("global_rank"));
-        registrationEntry.setId(random.nextInt());
+        int rando = random.nextInt();
+        while (registrationService.isIdDuplicate(rando)) {
+            rando = random.nextInt();
+        }
+        registrationEntry.setId(rando);
         return registrationService.addEntry(registrationEntry);
     }
 

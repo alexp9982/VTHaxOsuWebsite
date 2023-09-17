@@ -19,4 +19,6 @@ public interface MatchService {
     public List<MatchEntry> getPlayerMatches(int userID);
 
     public List<MatchEntry> getTournamentMatches(int tournamentID);
+
+    public Boolean isIdDuplicate(int id);
 }

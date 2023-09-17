@@ -15,7 +15,7 @@ public class MatchController {
     @Autowired
     private MatchService matchService;
 
-    private Random random = new Random();
+    private final Random random = new Random();
     @GetMapping("/getMatches")
     public List<MatchEntry> getMatches() {
         return matchService.getMatches();
@@ -23,7 +23,11 @@ public class MatchController {
 
     @PostMapping("/createMatch")
     public MatchEntry createMatch(@RequestBody MatchEntry matchEntry) {
-        matchEntry.setId(random.nextInt());
+        int rando = random.nextInt();
+        while (matchService.isIdDuplicate(rando)) {
+            rando = random.nextInt();
+        }
+        matchEntry.setId(rando);
         return matchService.addEntry(matchEntry);
     }
 

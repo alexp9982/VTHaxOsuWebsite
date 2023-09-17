@@ -1,5 +1,6 @@
 package com.cnu.tdatabaseapi.service.implementation;
 
+import com.cnu.tdatabaseapi.record.MatchEntry;
 import com.cnu.tdatabaseapi.record.UserEntry;
 import com.cnu.tdatabaseapi.repository.UserRepository;
 import com.cnu.tdatabaseapi.service.UserService;
@@ -39,5 +40,15 @@ public class UserServiceImpl implements UserService {
         userEntryVar.setRank(userEntry.getRank());
         userRepository.save(userEntryVar);
         return userEntryVar;
+    }
+
+    public Boolean isIdDuplicate(int id) {
+        List<UserEntry> allUsers = getUsers();
+        for (UserEntry u : allUsers) {
+            if (u.getId() == id) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 package com.cnu.tdatabaseapi.service.implementation;
 
+import com.cnu.tdatabaseapi.record.MatchEntry;
 import com.cnu.tdatabaseapi.record.RegistrationEntry;
 import com.cnu.tdatabaseapi.repository.RegistrationRepository;
 import com.cnu.tdatabaseapi.service.RegistrationService;
@@ -52,5 +53,15 @@ public class RegistrationServiceImpl implements RegistrationService {
         RegistrationEntry registrationEntry = registrationRepository.findById(id).get();
         registrationRepository.delete(registrationEntry);
         return registrationEntry;
+    }
+
+    public Boolean isIdDuplicate(int id) {
+        List<RegistrationEntry> allRegistrations = getRegistrations();
+        for (RegistrationEntry r : allRegistrations) {
+            if (r.getId() == id) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -15,4 +15,6 @@ public interface UserService {
     public UserEntry deleteEntry(int id);
 
     public UserEntry updateEntry(int id, UserEntry userEntry);
+
+    public Boolean isIdDuplicate(int id);
 }

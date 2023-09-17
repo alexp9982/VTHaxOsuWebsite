@@ -72,4 +72,15 @@ public class MatchServiceImpl implements MatchService {
         }
         return filtered;
     }
+
+    @Override
+    public Boolean isIdDuplicate(int id) {
+        List<MatchEntry> allMatches = getMatches();
+        for (MatchEntry m : allMatches) {
+            if (m.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -1,5 +1,6 @@
 package com.cnu.tdatabaseapi.service.implementation;
 
+import com.cnu.tdatabaseapi.record.MatchEntry;
 import com.cnu.tdatabaseapi.record.TournamentEntry;
 import com.cnu.tdatabaseapi.repository.TournamentRepository;
 import com.cnu.tdatabaseapi.service.TournamentService;
@@ -46,5 +47,15 @@ public class TournamentServiceImpl implements TournamentService {
         tournamentEntryVar.setImageLink(tournamentEntry.getImageLink());
         tournamentRepository.save(tournamentEntryVar);
         return tournamentEntryVar;
+    }
+
+    public Boolean isIdDuplicate(int id) {
+        List<TournamentEntry> allTournaments = getTournaments();
+        for (TournamentEntry t : allTournaments) {
+            if (t.getId() == id) {
+                return true;
+            }
+        }
+        return false;
     }
 }
