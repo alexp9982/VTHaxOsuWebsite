@@ -35,7 +35,7 @@ export default function TournamentDetails(props){
             setMaxRank(data.maxRank)
             setMinRank(data.minRank)
             setMode(data.mode)
-            //setMode(data.img)
+            setImg(data.imageLink)
 
             
           }
@@ -43,13 +43,13 @@ export default function TournamentDetails(props){
         }, []);
       
           return (
-              <div className=" w-full min-h-screen rounded-lg m-10 mx-auto dark:bg-gray-800">
+              <div className=" w-full min-h-screen rounded-xl m-6 mx-auto dark:bg-gray-800">
             
             <div className="  rounded-lg   dark:bg-gray-800 h-[90%] ">
                 { img ? 
-                <img className="w-[30%] mx-auto rounded-t-lg pt-6 " src={img} alt="" />
+                <img className="w-[60%] mx-auto pt-6 " src={img} alt="" />
                 :
-                <img className="w-[30%] mx-auto rounded-t-lg pt-6" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Osu%21_Logo_2016.svg/800px-Osu%21_Logo_2016.svg.png" alt="" />
+                <img className="w-[30%] mx-auto pt-6" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Osu%21_Logo_2016.svg/800px-Osu%21_Logo_2016.svg.png" alt="" />
 
                 }
                 <div className="p-5 mx-auto w-[60%] mt-4">
@@ -58,7 +58,7 @@ export default function TournamentDetails(props){
                     <h6 className="mb-2 text-2l font-semi tracking-tight text-gray-900 dark:text-white">Ranks:  ({minRank} - {maxRank})</h6>
                     <h5 className="mb-2 text-2l font-semi tracking-tight text-gray-900 dark:text-white">Closes: {closingDate}</h5>
                     
-                    <p className="mx-auto mb-3 font-normal text-gray-700 dark:text-gray-400">{description}</p>
+                    <p className="mx-auto mb-3 font-normal text-gray-900 dark:text-gray-300">{description}</p>
                     <div className="mx-auto mt-10 text-center">
                         <a href="#" className="inline-flex items-center px-8 py-3 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Register
