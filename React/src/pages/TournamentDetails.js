@@ -20,6 +20,7 @@ export default function TournamentDetails(props){
     const params = useParams();
 
         const [listOfAttendingUsers, SetListOfAttendingUsers] = useState()
+        const [registrationEnabled, setEnabledRegs] = useState(false)
 
 
         useEffect( ()=>{
@@ -32,7 +33,7 @@ export default function TournamentDetails(props){
       
         useEffect(() => {
           async function fetchData() {
-            var data = await fetch('http://localhost:8080/api/getTournamentByID/'+params.id ).then(res => {
+            var data = await fetch('http://localhost:8080/api/getTournamentByID/'+params.id , {cache: 'no-store'}).then(res => {
                 return res.json();
             });
       
@@ -49,7 +50,7 @@ export default function TournamentDetails(props){
             
           }
           fetchData();
-        }, []);
+        }, [registrationEnabled]);
       
           return (
               <div className=" w-full min-h-screen rounded-xl m-6 mx-auto bg-gray-800">
@@ -66,7 +67,7 @@ export default function TournamentDetails(props){
                     
                     <p className="mx-auto mb-3 font-normal text-gray-300">{description}</p>
                     <div className="mx-auto mt-10 text-center">
-                        <a onClick={()=>{
+                        <button disabled={registrationEnabled} onClick={()=>{
                              let sendBody = {
 
                                 "id": 1,
@@ -86,14 +87,14 @@ export default function TournamentDetails(props){
                                   "Content-Type": "application/json"
                                 },
                                 credentials: "include"
-                            })
+                            }).then(() => setEnabledRegs(true))
                         }} 
                         className="inline-flex items-center px-8 py-3 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Register
                             <svg className="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                 <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                             </svg>
-                        </a>
+                        </button>
                     </div>
                     <div className="mt-8">
                     <h1
