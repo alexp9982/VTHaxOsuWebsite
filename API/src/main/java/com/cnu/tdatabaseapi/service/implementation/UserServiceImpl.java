@@ -41,6 +41,7 @@ public class UserServiceImpl implements UserService {
         return userEntryVar;
     }
 
+    @Override
     public Boolean isIdDuplicate(int id) {
         List<UserEntry> allUsers = getUsers();
         for (UserEntry u : allUsers) {

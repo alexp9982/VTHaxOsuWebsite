@@ -54,6 +54,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         return registrationEntry;
     }
 
+    @Override
     public Boolean isIdDuplicate(int id) {
         List<RegistrationEntry> allRegistrations = getRegistrations();
         for (RegistrationEntry r : allRegistrations) {

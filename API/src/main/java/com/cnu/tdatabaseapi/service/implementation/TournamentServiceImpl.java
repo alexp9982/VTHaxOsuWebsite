@@ -48,6 +48,7 @@ public class TournamentServiceImpl implements TournamentService {
         return tournamentEntryVar;
     }
 
+    @Override
     public Boolean isIdDuplicate(int id) {
         List<TournamentEntry> allTournaments = getTournaments();
         for (TournamentEntry t : allTournaments) {
