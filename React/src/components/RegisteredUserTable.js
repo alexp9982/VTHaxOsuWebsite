@@ -27,33 +27,58 @@ export default function RegistedUserTable(props){
 
     return(
 
-    <Card className="">
-    <table className="  ">
-    <thead>
-        <tr>
-        {TABLE_HEAD.map((head) => (
-            <th key={head} className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                
+        <Card className="overflow-y-scroll max-h-96">
+        <table className="w-full min-w-max table-auto text-left">
+          <thead>
+            <tr>
+              {TABLE_HEAD.map((head) => (
+                <th
+                key={head}
+                className={`border-b border-blue-gray-100 bg-blue-gray-50 p-4 ${
+                head === "Username" ? "text-center align-middle" : "text-center"
+                }`}
+            >
+                <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal leading-none opacity-70"
+                >
                 {head}
+                </Typography>
             </th>
-        ))}
-        </tr>
-    </thead>
-    <div class="overflow-y-auto">
-    <tbody class="">
-        {registedUsers.map( (user) => (
-        <tr key={user.id} className="even:bg-blue-gray-50/50">
-            <td  className="p-4">
-                {user.username}
-            </td>
-            <td className="p-4">
-                {user.rank}
-            </td>
-        </tr>
-        ))}
-    </tbody>
-    </div>
-    </table>
-    </Card>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {registedUsers.map( (user)=> {
+
+              return (
+                <tr key={user.id}>
+                <td className={`text-center align-middle ${user.id}`}>
+                <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal"
+                >
+                    {user.username}
+                </Typography>
+                </td>
+
+                <td className={`text-center align-middle ${user.rank}`}>
+                <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal"
+                >
+                    {user.rank}
+                </Typography>
+                </td>
+                </tr>
+              
+              );
+            })}
+          </tbody>
+        </table>
+      </Card>
     );
 }
