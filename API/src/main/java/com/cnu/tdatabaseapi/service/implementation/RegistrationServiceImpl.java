@@ -53,4 +53,15 @@ public class RegistrationServiceImpl implements RegistrationService {
         registrationRepository.delete(registrationEntry);
         return registrationEntry;
     }
+
+    @Override
+    public Boolean isIdDuplicate(int id) {
+        List<RegistrationEntry> allRegistrations = getRegistrations();
+        for (RegistrationEntry r : allRegistrations) {
+            if (r.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

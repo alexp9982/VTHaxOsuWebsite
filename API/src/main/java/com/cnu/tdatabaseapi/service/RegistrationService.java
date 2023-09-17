@@ -14,4 +14,6 @@ public interface RegistrationService {
     public RegistrationEntry addEntry(RegistrationEntry registrationEntry);
 
     public RegistrationEntry deleteEntry(int id);
+
+    public Boolean isIdDuplicate(int id);
 }

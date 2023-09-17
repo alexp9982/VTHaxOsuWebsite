@@ -40,4 +40,15 @@ public class UserServiceImpl implements UserService {
         userRepository.save(userEntryVar);
         return userEntryVar;
     }
+
+    @Override
+    public Boolean isIdDuplicate(int id) {
+        List<UserEntry> allUsers = getUsers();
+        for (UserEntry u : allUsers) {
+            if (u.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

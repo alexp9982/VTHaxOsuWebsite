@@ -20,7 +20,7 @@ public class TournamentController {
     @Autowired
     private TournamentService tournamentService;
 
-    private Random random = new Random();
+    private final Random random = new Random();
     @GetMapping("/getTournaments")
     public List<TournamentEntry> getTournaments() {
         // Use the injected tournamentService to fetch tournaments
@@ -47,7 +47,11 @@ public class TournamentController {
         tournamentEntry.setHostID(myUser.getAttribute("id"));
 
 
-        tournamentEntry.setId(random.nextInt());
+        int rando = random.nextInt();
+        while (tournamentService.isIdDuplicate(rando)) {
+            rando = random.nextInt();
+        }
+        tournamentEntry.setId(rando);
         return tournamentService.addEntry(tournamentEntry);
     }
 

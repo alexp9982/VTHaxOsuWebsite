@@ -47,4 +47,15 @@ public class TournamentServiceImpl implements TournamentService {
         tournamentRepository.save(tournamentEntryVar);
         return tournamentEntryVar;
     }
+
+    @Override
+    public Boolean isIdDuplicate(int id) {
+        List<TournamentEntry> allTournaments = getTournaments();
+        for (TournamentEntry t : allTournaments) {
+            if (t.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

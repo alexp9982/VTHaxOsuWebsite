@@ -15,4 +15,6 @@ public interface TournamentService {
     public TournamentEntry deleteEntry(int id);
 
     public TournamentEntry updateEntry(int id, TournamentEntry tournamentEntry);
+
+    public Boolean isIdDuplicate(int id);
 }

@@ -14,7 +14,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    private Random random = new Random();
+    private final Random random = new Random();
     @GetMapping("/getUsers")
     public List<UserEntry> getUsers() {
         return userService.getUsers();
@@ -27,7 +27,11 @@ public class UserController {
 
     @PostMapping("/createUser")
     public UserEntry insert(@RequestBody UserEntry userEntry) {
-        userEntry.setId(random.nextInt());
+        int rando = random.nextInt();
+        while (userService.isIdDuplicate(rando)) {
+            rando = random.nextInt();
+        }
+        userEntry.setId(rando);
         return userService.addEntry(userEntry);
     }
 
