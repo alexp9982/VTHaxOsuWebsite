@@ -14,7 +14,7 @@ export default function TournamentListing(props){
 
         <div className='w-30 m-2 '>
             <div></div>
-            <div className="group relative rounded-lg overflow-hidden dark:bg-gray-800  hover:shadow-2xl ">
+            <div className="group relative rounded-lg overflow-hidden bg-gray-800  hover:shadow-2xl ">
                 
             <div className="object-contain h-36 w-96">
             

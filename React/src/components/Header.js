@@ -1,20 +1,39 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { NavLink } from 'react-router-dom'
 
-const navigation = [
-  { name: 'Tournament Listings', href: '/tournamentListings' },
-  { name: 'user', href: '/userPage' },
-  { name: 'Login', href: 'http://localhost:8080/oauth2/authorization/osu-login' }
-//   { name: 'Definition', href: '/definition'},
-]
+
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Header(props) {
+  const [Login, SetLogin] = useState("Login")
+
+  const navigation = [
+    { name: 'Tournament Listings', href: '/tournamentListings' },
+    { name: 'user', href: '/userPage' },
+    { name: Login, href: (Login == "Login") ? 'http://localhost:8080/oauth2/authorization/osu-login' : "http://localhost:8080/logout"}
+  //   { name: 'Definition', href: '/definition'},
+  ]
+
+  useEffect(() => {
+    const getSelf = async () => {
+      let selfData = await fetch('/api/getSelf')
+      if (selfData.status == 200) {
+        selfData = await selfData.json()
+        SetLogin(selfData.username)
+      }
+    }
+
+    getSelf()
+
+  }, [])
+
 
   return (
     <>

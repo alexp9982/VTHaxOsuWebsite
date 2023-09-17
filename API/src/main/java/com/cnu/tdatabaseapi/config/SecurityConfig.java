@@ -28,6 +28,7 @@ public class SecurityConfig {
 //                defaultSuccessUrl("localhost:3000/TournamentListings")
 
                 .oauth2Login().defaultSuccessUrl("http://localhost:3000/TournamentListings");
+        http.logout().logoutSuccessUrl("http://localhost:3000/TournamentListings");
 
         return http.build();
 
