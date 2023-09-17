@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import TournamentDetails from '../pages/TournamentDetails';
 
 

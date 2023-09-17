@@ -13,6 +13,7 @@ function App() {
       <BrowserRouter>
       <Header>
           <Routes>
+            <Route path="" element={<TournamentListing />}></Route>
             <Route path='TournamentListings' element={<TournamentListing />}> 
             </Route>
             <Route path='TournamentListings/:id' element={<TournamentDetails />}/>
