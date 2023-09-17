@@ -18,6 +18,7 @@ export default function AddTournament(){
     function sendTournamentToDatabase(){
         let sendBody = {
 
+
             "id": 13377,
             "name": name,
             "description": description,

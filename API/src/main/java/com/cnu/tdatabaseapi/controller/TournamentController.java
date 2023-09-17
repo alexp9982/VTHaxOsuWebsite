@@ -34,14 +34,19 @@ public class TournamentController {
     @PostMapping("/createTournament")
     public TournamentEntry insert(@RequestBody TournamentEntry tournamentEntry) {
 
+        System.out.println("Creating tournament...");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication.getPrincipal());
         if (authentication.getPrincipal() == "anonymousUser") {
+            System.out.println("Not authenticated!!");
             return null;
         }
 
         DefaultOAuth2User myUser = (DefaultOAuth2User) authentication.getPrincipal();
 
         tournamentEntry.setHostID(myUser.getAttribute("id"));
+
+
         tournamentEntry.setId(random.nextInt());
         return tournamentService.addEntry(tournamentEntry);
     }

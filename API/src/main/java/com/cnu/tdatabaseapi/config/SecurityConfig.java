@@ -13,7 +13,7 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.cors().and().csrf().disable()
+        http.cors().and().csrf().disable()
 //                .authorizeHttpRequests( auth -> {
 //                    auth.requestMatchers("/api/createTournament").authenticated();
 //                    auth.requestMatchers("/api/createMatch").authenticated();
@@ -24,9 +24,12 @@ public class SecurityConfig {
 
 //                    auth.requestMatchers("/**").permitAll();
 //                })
-//                .formLogin(Customizer.withDefaults())
-                .oauth2Login(Customizer.withDefaults())
-                .build();
+//                .formLogin().loginProcessingUrl("/login").
+//                defaultSuccessUrl("localhost:3000/TournamentListings")
+
+                .oauth2Login().defaultSuccessUrl("http://localhost:3000/TournamentListings");
+
+        return http.build();
 
 
     }
