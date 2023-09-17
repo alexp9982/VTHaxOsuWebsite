@@ -11,12 +11,15 @@ export default function AddTournament(){
     const[minRank,setMinRank] = useState();
     const[maxRank,setMaxRank] = useState();
     const[mode,setMode] = useState();
+    const[img,setImg] = useState();
+
 
 
     function sendTournamentToDatabase(){
         let sendBody = {
 
-            "id": 125,
+
+            "id": 13377,
             "name": name,
             "description": description,
             "hostID": 12,
@@ -24,7 +27,7 @@ export default function AddTournament(){
             "minRank": Number(minRank),
             "maxRank": Number(maxRank),
             "mode": mode,
-            "imageLink": "https://myimage.jpg"
+            "imageLink": img
         }
 
 
@@ -128,6 +131,15 @@ export default function AddTournament(){
                       onChange={ (e) => {
                         setMode(e.target.value)
                      }}/>
+
+                    <label className="block text-black text-sm font-bold mb-1">
+                        Img Link
+                      </label>
+                      <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" 
+                      onChange={ (e) => {
+                        setImg(e.target.value)
+                     }}/>
+                     
                     </form>
                   </div>
                   
@@ -153,6 +165,7 @@ export default function AddTournament(){
                             setMaxRank("")
                             setMode("")
                             setClosingDate("")
+                            setImg("")
                             setShowModal(false)
                         }}
                     >

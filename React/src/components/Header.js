@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom'
 
 const navigation = [
   { name: 'Tournament Listings', href: '/tournamentListings' },
-  { name: 'user', href: '/userPage' }
-//   { name: 'Dictionary', href: '/dictionary' },
+  { name: 'user', href: '/userPage' },
+  { name: 'Login', href: '/authcallback' }
 //   { name: 'Definition', href: '/definition'},
 ]
 
@@ -90,7 +90,9 @@ export default function Header(props) {
         <div className='min-h-screen max-w-7xl mx-auto px-2 py-2'>
             {props.children}
         </div>
+
     </div>
+
 
      </>
   );
