@@ -55,12 +55,9 @@ export default function TournamentDetails(props){
               <div className=" w-full min-h-screen rounded-xl m-6 mx-auto bg-gray-800">
             
             <div className="  rounded-lg   bg-gray-800 h-[90%] ">
-                { img ? 
+        
                 <img className="w-[60%] mx-auto pt-6 " src={img} alt="" />
-                :
-                <img className="w-[30%] mx-auto pt-6" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Osu%21_Logo_2016.svg/800px-Osu%21_Logo_2016.svg.png" alt="" />
-
-                }
+    
                 <div className="p-5 mx-auto w-[60%] mt-4">
                     
                     <h3 className="mb-2 text-2xl font-bold tracking-tight text-white">{name}</h3>
@@ -98,12 +95,13 @@ export default function TournamentDetails(props){
                             </svg>
                         </a>
                     </div>
-                    <div className="mt-8 ">
+                    <div className="mt-8">
                     <h1
-                        class="text-white text-center mb-4	">
+                        className="text-white cursor-pointer text-center mb-4"
+                    >
                         Registered Users:
                     </h1>
-                        <RegistedUserTable tourID={params.id} />
+                    <RegistedUserTable tourID={params.id} />
                     </div>
                 </div>
             </div>
