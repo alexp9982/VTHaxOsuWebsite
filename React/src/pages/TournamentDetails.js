@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState} from "react";
 import React from 'react';
+import RegistedUserTable from "../components/RegisteredUserTable";
 export default function TournamentDetails(props){
 
 
@@ -17,6 +18,16 @@ export default function TournamentDetails(props){
 
 
     const params = useParams();
+
+        const [listOfAttendingUsers, SetListOfAttendingUsers] = useState()
+
+
+        useEffect( ()=>{
+            
+        }, [listOfAttendingUsers]);
+
+
+
 
       
         useEffect(() => {
@@ -63,7 +74,9 @@ export default function TournamentDetails(props){
 
                                 "id": 1,
                                 "userID": 1,
-                                "tournamentID":Number(params.id)
+                                "tournamentID":Number(params.id),
+                                "username": "usn",
+                                "rank": 1
 
                             }
                     
@@ -87,6 +100,8 @@ export default function TournamentDetails(props){
                     </div>
                 </div>
             </div>
+            <RegistedUserTable tourID={params.id} />
+
         </div>
         );
         
